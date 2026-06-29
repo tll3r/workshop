@@ -16,3 +16,8 @@
         name: "{{ package_filter }}"
         state: latest
         update_cache: true
+
+    - name: Ensure chronyd is running
+      ansible.builtin.service:
+        name: chronyd
+        state: started
