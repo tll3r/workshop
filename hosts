@@ -1,0 +1,4 @@
+[workshop]
+redhat-proxmox-workshop-1      ansible_host=192.168.137.160
+redhat-proxmox-workshop-2      ansible_host=192.168.137.161
+redhat-proxmox-workshop-3      ansible_host=192.168.137.162
