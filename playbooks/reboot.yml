@@ -1,1 +1,14 @@
+---
 
+- name: Reboot and verify
+  hosts: workshop
+  become: true
+
+  tasks:
+    - name: Reboot the server
+      ansible.builtin.reboot:
+        reboot_timeout: 30
+        msg: "Patch Tuesday — rebooting after updates"
+
+    - name: Verify the server is back
+      ansible.builtin.ping:
