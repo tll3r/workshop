@@ -2,3 +2,7 @@
 - name: Health check
   hosts: workshop
   become: true
+
+  tasks:
+    - name: Verify Connectivy
+      ansible.builtin.ping:
