@@ -1,8 +1,5 @@
 
 ---
-
 - name: Health check
   hosts: workshop
   become: true
-
-  tasks:
