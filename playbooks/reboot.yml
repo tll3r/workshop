@@ -1,5 +1,5 @@
 ---
-- name: Reboot and verify
+- name: Reboot
   hosts: workshop
   become: true
 
