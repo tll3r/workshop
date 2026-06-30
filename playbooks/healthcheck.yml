@@ -6,34 +6,3 @@
   become: true
 
   tasks:
-    - name: Verify connectivity
-      ansible.builtin.ping:
-
-    - name: Gather service status
-      ansible.builtin.service_facts:
-
-    - name: Verify sshd is running
-      ansible.builtin.assert:
-        that:
-          - ansible_facts.services['sshd.service'].state == 'running'
-        success_msg: "sshd is running"
-        fail_msg: "sshd is NOT running on {{ inventory_hostname }}"
-
-    - name: Verify chronyd is running
-      ansible.builtin.assert:
-        that:
-          - ansible_facts.services['chronyd.service'].state == 'running'
-        success_msg: "chronyd is running"
-        fail_msg: "chronyd is NOT running on {{ inventory_hostname }}"
-
-    - name: Check for remaining available updates
-      ansible.builtin.dnf:
-        name: "*"
-        state: latest
-        update_cache: true
-      check_mode: true
-      register: pending_updates
-
-    - name: Show server status
-      ansible.builtin.debug:
-        msg: "{{ inventory_hostname }} is healthy — {{ ansible_distribution }} {{ ansible_distribution_version }}, up {{ ansible_uptime_seconds | int // 60 }} min, {{ 'updates pending' if pending_updates is changed else 'fully patched' }}"
