@@ -1,5 +1,5 @@
 ---
-- name: Patch servers
+- name: Patch and fix servers
   hosts: workshop
   become: true
 
