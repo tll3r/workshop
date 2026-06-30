@@ -14,6 +14,6 @@
     - name: Verify sshd is running
       ansible.builtin.assert:
         that:
-          - ansible_facts.services['sshd  .service'].state == 'running'
+          - ansible_facts.services['sshd.service'].state == 'running'
         success_msg: "sshd is running"
         fail_msg: "sshd is NOT running on {{ inventory_hostname }}"
