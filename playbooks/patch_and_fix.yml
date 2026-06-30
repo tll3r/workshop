@@ -3,21 +3,5 @@
   hosts: workshop
   become: true
 
-  vars:
-    package_filter: "*"
 
-  tasks:
-    - name: Show patching scope
-      ansible.builtin.debug:
-        msg: "Patching {{ inventory_hostname }} — packages: {{ package_filter }}"
 
-    - name: Update packages
-      ansible.builtin.dnf:
-        name: "{{ package_filter }}"
-        state: latest
-        update_cache: true
-
-    - name: Ensure chronyd is running
-      ansible.builtin.service:
-        name: chronyd
-        state: started
